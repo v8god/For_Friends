@@ -14,35 +14,47 @@
             @import url('https://fonts.cdnfonts.com/css/knight-warrior');
 
             @media (max-width: 400px){
-                body{
+                /*body{
                     width: 100vw;
-                }
+                }*/
                 .container{
+                    background-color: transparent;
+                    border: none;
+                    position: absolute;
+                    left: -100px;
                     width: 100vw;
                 }
                 .holder{
-                    width: 100vw;
-                    height: 100vh;
+                    width: 116vw;
+                    height: 117vh;
                 }
                 .title{
                     left: 50px;
                 }
                 .disc{
-                    width: 100vw;
-                    height: 100vw;
+                    width: 116vw;
+                    height: 116vw;
                     translate(-50%, -50%)
                 }
+                .edit .pre_author{
+                    width: 116vw;
+                }
+                .edit .author{
+                    position: relative;
+                    top: 50px;
+                    width: 116vw;
+                }
                 .content{
-                    width: 100vw;
+                    width: 116vw;
                 }
                 .dml{
-                    width: 100vw;
+                    width: 116vw;
                 }
                 .contact{
-                    width: 100vw;
+                    width: 116vw;
                 }
                 .popup{
-                    width: 100vw;
+                    width: 116vw;
                 }
             }
         </style>
@@ -78,8 +90,10 @@
             </div>
             <div class="disc"></div>
             <div class="edit" id="about">
-                <h1>Video </h1>
-                <h2 data-content="Editor">Editor</h2>
+                <div class="pre_author">
+                    <h1>Video </h1>
+                    <h2 data-content="Editor">Editor</h2>
+                </div>
                 <div class="author">
                     <h3>Raman</h3>
                     <div class="par">
@@ -235,6 +249,7 @@
         </div>
     </body>
 </html>
+
 
 
 
