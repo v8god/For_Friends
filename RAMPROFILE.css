@@ -475,7 +475,7 @@ ul li.active a{
   /*border: 19px solid #f00;*/
   font-family: "Space Mono", monospace;
   position: relative;
-  top:  250px;
+  top:  50px;
   height: 40vh;
   width: 98.7vw;
   margin: 0;
@@ -741,4 +741,5 @@ s2 a1:hover{
     color: #ff9100;
     text-decoration: underline;
 }
+
 
