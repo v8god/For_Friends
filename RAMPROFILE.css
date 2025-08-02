@@ -5,6 +5,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.containerbox{
+  width: 100vw;
+  height: auto;
+}
 .holder {
     /*border: 1px solid red;*/
     position:relative;
@@ -741,5 +745,6 @@ s2 a1:hover{
     color: #ff9100;
     text-decoration: underline;
 }
+
 
 
