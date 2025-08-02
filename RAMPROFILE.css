@@ -475,7 +475,7 @@ ul li.active a{
   /*border: 19px solid #f00;*/
   font-family: "Space Mono", monospace;
   position: relative;
-  top:  250px;
+  top:  230px;
   height: 40vh;
   width: 98.7vw;
   margin: 0;
@@ -562,7 +562,7 @@ ul.submenu li:hover {
 /****************/
 .contact{
     position: relative;
-    top: 70px;
+    top: 270px;
     /*background-color: rgb(61, 61, 233);*/
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     width: 98.4vw;
@@ -741,4 +741,5 @@ s2 a1:hover{
     color: #ff9100;
     text-decoration: underline;
 }
+
 
