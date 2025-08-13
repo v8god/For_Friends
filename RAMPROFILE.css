@@ -115,7 +115,7 @@ ul li.active a{
 /* DISC */
 /********/
 .disc{
-    background-image: url(Ramandeep/images1/spidydisc.png);
+    background-image: url(images/spidydisc.png);
     
     width: 375px;
     height: 375px;
@@ -745,6 +745,7 @@ s2 a1:hover{
     color: #ff9100;
     text-decoration: underline;
 }
+
 
 
 
