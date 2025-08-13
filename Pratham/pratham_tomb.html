@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content ="width=device-width, initial-scale=1">
+  <title>Rotating Grid Sphere</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: #000; }
+    #ui {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+    }
+    #ui button {
+      padding: 8px 12px;
+      color: white;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="ui">
+    <button id="toggleRotation">Pause Rotation</button>
+    <button id="changeView">Change Camera View</button>
+  </div>
+
+<!--  <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/controls/OrbitControls.js"></script>
+-->
+  <!--<script defer>-->
+  <script type="module">
+      import * as THREE from './java_script/three.module.js';
+      import { OrbitControls } from './java_script/OrbitControls.js';
+      import { EffectComposer } from './java_script/EffectComposer.js';
+      import { RenderPass } from './java_script/RenderPass.js';
+      import { UnrealBloomPass } from './java_script/UnrealBloomPass.js';
+      import { DragControls } from './java_script/DragControls.js';
+      
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
+      camera.position.set(0, 600, 0); // 🆕 CHANGED — further away for bigger sphere
+      
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+      
+      // Orbit Controls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      
+      // 🆕 CHANGED — Bigger grid sphere (5× radius)
+      const coreRadius = 20;
+      const geometry = new THREE.SphereGeometry(2 * 25, 64, 64); // radius=10, more segments
+      const wireframe = new THREE.WireframeGeometry(geometry);
+      const lineMaterial = new THREE.LineBasicMaterial({ color: 0x00ffff });
+      const sphere = new THREE.LineSegments(wireframe, lineMaterial);
+      scene.add(sphere);
+      
+      // ✨ Stars Setup
+      const starMeshes = [];
+      const angles = [];
+      const radii = [];
+      const directions = [];
+      const velocities = [];
+      
+      // 🆕 ADDED — Layer settings
+      const numLayers = 10;             // total layers
+      const layerSpacing = 20;          // vertical distance between layers
+      const starsInFirstLayer = 1024;    // stars in top layer
+      const coreSpacing = 20;
+      //const radius = coreSpacing + coreRadius + (numLayers * layerSpacing);
+      
+  
+  
+      
+      const starMaterial = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 1.0,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      });
+      const starGeometry = new THREE.SphereGeometry(2, 12, 12); // bigger round star
+      
+      // 🆕 CHANGED — Generate stars in layers
+      for (let layer = 0; layer < numLayers; layer++) {
+        const starsInLayer = Math.floor(starsInFirstLayer / Math.pow(2, layer));
+        const maxRadius = coreSpacing + coreRadius + (numLayers * layerSpacing);
+        const radius = maxRadius - (layer * layerSpacing);
+        //const layerRadius = coreSpacing + coreRadius + (numLayers * layerSpacing);//<<--10/8>7:46pm
+        //const y = -(layer * layerSpacing);<<--10/8>6:17pm
+      
+        for (let s = 0; s < starsInLayer; s++) {
+          const angle = Math.random() * 2 * Math.PI;
+          //const radius = coreRadius + Math.random() * 200; // wider spread<<--10/8>6:17pm
+          const x = radius * Math.cos(angle);//<<--10/8>6:17pm
+          const z = radius * Math.sin(angle);//<<--10/8>6:17pm
+          //const x = layerRadius * Math.cos(angle);//<<--10/8>7:46pm
+          //const z = layerRadius * Math.sin(angle);//<<--10/8>7:46pm
+          const y = (Math.random() - 0.5) * 3;
+      
+          const mesh = new THREE.Mesh(starGeometry, starMaterial.clone());
+          mesh.position.set(x, y, z);
+      
+          directions.push(Math.random() < 0.5 ? 1 : -1);
+          angles.push(angle);
+          //radii.push(layerRadius);//<<--10/8>7:46pm
+          radii.push(radius);
+          velocities.push(0.2);
+      
+          starMeshes.push(mesh);
+          scene.add(mesh);
+        }
+      }
+      
+      // 🔵 Bloom Composer
+      const composer = new EffectComposer(renderer);
+      composer.addPass(new RenderPass(scene, camera));
+      const bloomPass = new UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        1.5,
+        0.4,
+        0.85
+      );
+      composer.addPass(bloomPass);
+      
+      // Rotation toggle
+      let isRotating = true;
+      document.getElementById("toggleRotation").onclick = () => {
+        isRotating = !isRotating;
+        document.getElementById("toggleRotation").innerText =
+          isRotating ? "Pause Rotation" : "Resume Rotation";
+      };
+      
+      // Drag controls
+      const dragControls = new DragControls(starMeshes, camera, renderer.domElement);
+      dragControls.addEventListener('dragstart', () => controls.enabled = false);
+      dragControls.addEventListener('dragend', () => controls.enabled = true);
+      
+      const clock = new THREE.Clock();
+      
+      // Render loop
+      function animate() {
+        requestAnimationFrame(animate);
+      
+        if (isRotating) {
+          sphere.rotation.y += 0.002;
+      
+          const delta = clock.getDelta();
+          const speed = 0.2;
+      
+          for (let i = 0; i < starMeshes.length; i++) {
+            const star = starMeshes[i];
+            angles[i] += delta * speed * directions[i];
+      
+            // Update star position
+            const r = radii[i];
+            const x = r * Math.cos(angles[i]);
+            const z = r * Math.sin(angles[i]);
+            const y = star.position.y;
+      
+            star.position.set(x, y, z);
+          }
+        }
+      
+        controls.update();
+        composer.render();
+      }
+      
+      animate();
+    // 🆕 CAMERA VIEW CHANGE EVENT
+    document.getElementById("changeView").addEventListener("click", () => {
+      // New target position (example: above and to the side)
+      const targetPos = new THREE.Vector3(500, 300, 500);
+    
+      // Animate camera position (simple lerp)
+      let progress = 0;
+      const startPos = camera.position.clone();
+    
+      function animateCamera() {
+        progress += 0.02; // speed of movement
+        if (progress >= 1) progress = 1;
+    
+        camera.position.lerpVectors(startPos, targetPos, progress);
+        controls.update();
+    
+        if (progress < 1) requestAnimationFrame(animateCamera);
+      }
+    
+      animateCamera();
+    });
+
+      
+      // Resize handling
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(window.innerWidth, window.innerHeight);
+      });
+  </script>
+</body>
+</html>
