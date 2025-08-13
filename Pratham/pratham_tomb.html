@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content ="width=device-width, initial-scale=1">
-  <title>Pratham</title>
+  <title>Rotating Grid Sphere</title>
   <style>
     body { margin: 0; overflow: hidden; background: #000; }
     #ui {
@@ -24,7 +24,6 @@
 <body>
   <div id="ui">
     <button id="toggleRotation">Pause Rotation</button>
-    <button id="changeView">Change Camera View</button>
   </div>
 
 <!--  <script src="https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js"></script>
@@ -142,30 +141,7 @@
       dragControls.addEventListener('dragend', () => controls.enabled = true);
       
       const clock = new THREE.Clock();
-
-      // 🆕 CAMERA VIEW CHANGE EVENT
-      // document.getElementById("changeView").addEventListener("click", () => {
-      //   // New target position (example: above and to the side)
-      //   const targetPos = new THREE.Vector3(500, 300, 500);
       
-      //   // Animate camera position (simple lerp)
-      //   let progress = 0;
-      //   const startPos = camera.position.clone();
-      
-      //   function animateCamera() {
-      //     progress += 0.02; // speed of movement
-      //     if (progress >= 1) progress = 1;
-      
-      //     camera.position.lerpVectors(startPos, targetPos, progress);
-      //     controls.update();
-      
-      //     if (progress < 1) requestAnimationFrame(animateCamera);
-      //   }
-      
-      //   animateCamera();
-      // });
-
-    
       // Render loop
       function animate() {
         requestAnimationFrame(animate);
@@ -195,7 +171,6 @@
       }
       
       animate();
-    
       
       // Resize handling
       window.addEventListener("resize", () => {
