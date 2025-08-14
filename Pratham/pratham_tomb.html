@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content ="width=device-width, initial-scale=1">
-  <title>Rotating Grid Sphere</title>
+  <title>Pratham pfp</title>
   <style>
     body { margin: 0; overflow: hidden; background: #000; }
     #ui {
@@ -147,7 +147,7 @@
       const clock = new THREE.Clock();
 
       // 🆕 CAMERA VIEW CHANGE EVENT
-      document.getElementById("changeView").addEventListener("click", () => {
+      /*document.getElementById("changeView").addEventListener("click", () => {
         // New target position (example: above and to the side)
         const targetPos = new THREE.Vector3(500, 300, 500);
       
@@ -166,7 +166,33 @@
         }
       
         animateCamera();
+      });*/
+      // Store original camera position
+      const originalPos = camera.position.clone();
+      let isAltView = false;
+      
+      document.getElementById("changeView").addEventListener("click", () => {
+        const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(500, 300, 500);
+        const startPos = camera.position.clone();
+        let progress = 0;
+      
+        function animateCamera() {
+          progress += 0.02;
+          if (progress >= 1) progress = 1;
+      
+          camera.position.lerpVectors(startPos, targetPos, progress);
+          controls.update();
+      
+          if (progress < 1) {
+            requestAnimationFrame(animateCamera);
+          } else {
+            isAltView = !isAltView; // toggle state when done
+          }
+        }
+      
+        animateCamera();
       });
+
 
     
       // Render loop
