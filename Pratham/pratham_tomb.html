@@ -25,6 +25,7 @@
   <div class="headerbg">
     <div id="ui">
       <button id="toggleRotation">Pause Rotation</button>
+      <button id="changeView">More Info</button>
     </div>
   </div>
 
@@ -144,7 +145,30 @@
       dragControls.addEventListener('dragend', () => controls.enabled = true);
       
       const clock = new THREE.Clock();
+
+      // 🆕 CAMERA VIEW CHANGE EVENT
+      document.getElementById("changeView").addEventListener("click", () => {
+        // New target position (example: above and to the side)
+        const targetPos = new THREE.Vector3(500, 300, 500);
       
+        // Animate camera position (simple lerp)
+        let progress = 0;
+        const startPos = camera.position.clone();
+      
+        function animateCamera() {
+          progress += 0.02; // speed of movement
+          if (progress >= 1) progress = 1;
+      
+          camera.position.lerpVectors(startPos, targetPos, progress);
+          controls.update();
+      
+          if (progress < 1) requestAnimationFrame(animateCamera);
+        }
+      
+        animateCamera();
+      });
+
+    
       // Render loop
       function animate() {
         requestAnimationFrame(animate);
