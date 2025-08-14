@@ -172,7 +172,7 @@
       let isAltView = false;
       
       document.getElementById("changeView").addEventListener("click", () => {
-        const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(100, 300, 500);
+        const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(500, 300, 100);
         const startPos = camera.position.clone();
         let progress = 0;
       
