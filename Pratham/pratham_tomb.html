@@ -5,6 +5,7 @@
   <meta name="viewport" content ="width=device-width, initial-scale=1">
   <title>Pratham pfp</title>
   <style>
+    <link rel="stylesheet" href="pratham_tomb.css">
     body { margin: 0; overflow: hidden; background: #000; }
     #ui {
       position: absolute;
@@ -19,7 +20,6 @@
       border: 1px solid white;
       cursor: pointer;
     }
-     <link rel="stylesheet" href="pratham_tomb.css">
   </style>
 </head>
 <body>
@@ -176,7 +176,7 @@
       
       document.getElementById("changeView").addEventListener("click", () => {
         // const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(500, 300, 100);
-        const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(-300, 30, 300);
+        const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(-800, 300, 300);
         const startPos = camera.position.clone();
         let progress = 0;
       
