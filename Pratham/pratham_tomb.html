@@ -55,6 +55,8 @@
       renderer.setSize(headerbg.clientWidth, headerbg.clientHeight);
       //document.body.appendChild(renderer.domElement);//this for rendering the body
       document.querySelector(".headerbg").appendChild(renderer.domElement);
+      // camera.aspect = headerbg.clientWidth / headerbg.clientHeight;
+      // camera.updateProjectionMatrix();
       
       // Orbit Controls
       const controls = new OrbitControls(camera, renderer.domElement);
@@ -233,10 +235,12 @@
       
       // Resize handling
       window.addEventListener("resize", () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.aspect = headerbg.clientWidth / headerbg.clientHeight;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        composer.setSize(window.innerWidth, window.innerHeight);
+        // renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(headerbg.clientWidth, headerbg.clientHeight);
+        //composer.setSize(window.innerWidth, window.innerHeight);
+        composer.setSize(headerbg.clientWidth, headerbg.clientHeight);
       });
   </script>
 </body>
