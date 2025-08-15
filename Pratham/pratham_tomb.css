@@ -1,10 +1,10 @@
 .headerbg { margin: 0; overflow: hidden; background: #000; }
 .headerbg{
   position: relative;
-  top: 0;
-  left: 0;
-  width: 98vw;
-  height: 98vh;
+  top: -5pv;
+  left: -5px;
+  width: 99vw;
+  height: 99vh;
 }
 .info-card{
   position: absolute;
