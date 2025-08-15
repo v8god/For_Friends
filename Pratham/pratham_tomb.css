@@ -44,7 +44,15 @@
   font-size: 30px;
   color: #fff;
 }
+.flip-front{
+  background: coral;
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 20px;
+  color: #fff;
+}
 .flip-back{
+  background: teal;
+  transform: rotateY(180deg); /* start flipped */
   font-family: "Roboto Slab", sans-serif;
   font-size: 20px;
   color: #fff;
@@ -56,4 +64,10 @@
   background: rgba(255,255,255,0.1);
   border: 1px solid white;
   cursor: pointer;
+}
+#changeView input:checked + .flip-inner {
+  transform: rotateY(180deg);
+}
+#changeView input:checked + .flip-inner.rotate360 {
+  transform: rotateY(360deg);
 }
