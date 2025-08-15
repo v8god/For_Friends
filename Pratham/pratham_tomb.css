@@ -8,7 +8,8 @@
 .info-card{
   position: absolute;
   top: 100px;
-  right : 50px;
+  right: 50px;
+  background-color: #FF7F50;
   width: 30vw;
   height: 70vh;
 }
