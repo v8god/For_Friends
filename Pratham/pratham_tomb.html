@@ -37,7 +37,8 @@
           <span>Pratham</span>
           <span1>Goyal</span1>
         </h1>
-        <label for="flip-toggle" id="changeView">More Info</label>
+<!--         <label for="flip-toggle" id="changeView">More Info</label> -->
+        <label for="flip-toggle" class="changeView">More Info</label>
 <!--         <button for="flip-toggle" id="changeView">More Info</button> -->
       </div>
       <div class="flip-back">
@@ -51,7 +52,8 @@
 <!--           <div class"back-arrow"><-</div>
         </label> -->
 <!--         <button for="flip-toggle" id="changeView"><-</button> -->
-        <label for="flip-toggle" id="changeView"><-</label>
+<!--         <label for="flip-toggle" id="changeView"><-</label> -->
+        <label for="flip-toggle" class="changeView"><-</label>
       </div>
     </div>
   </div>
@@ -201,8 +203,10 @@
       // Store original camera position
       const originalPos = camera.position.clone();
       let isAltView = false;
-      
-      document.getElementById("changeView").addEventListener("click", () => {
+
+      document.querySelectorAll(".changeView").forEach(el => {
+        el.addEventListener("click", () => {
+      // document.getElementById("changeView").addEventListener("click", () => {
         // const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(500, 300, 100);
         const targetPos = isAltView ? originalPos.clone() : new THREE.Vector3(-300, 130, 50);
         const startPos = camera.position.clone();
