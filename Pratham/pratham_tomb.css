@@ -83,12 +83,12 @@
   color: #fff;
 }
 /* .flip-back #changeView .back-arrow{ */
-.flip-back #changeView{
+/* .flip-back #changeView{
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 .info-card #flip-toggle{
   display: none; /* hides it fully */
 }
