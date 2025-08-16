@@ -81,7 +81,7 @@
   background-color: #000;
   color: #fff;
 }
-#flip-toggle{
+.info-card #flip-toggle{
   display: none; /* hides it fully */
 }
 #flip-toggle:checked + .flip-inner {
