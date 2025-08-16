@@ -4,7 +4,7 @@
 .headerbg { margin: 0; overflow: hidden; background: #000; }
 .headerbg{
   position: relative;
-  top: -5pv;
+  top: -5px;
   left: -5px;
   width: 99vw;
   height: 99vh;
@@ -76,14 +76,17 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+/*   width: 20px;
+  height: 20px; */
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+}
+.flip-back #changeView .back-arrow{
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #000;
-  color: #fff;
 }
 .info-card #flip-toggle{
   display: none; /* hides it fully */
