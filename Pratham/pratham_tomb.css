@@ -16,6 +16,7 @@
 /*   background-color: #FF7F50; */
   width: 22vw;
   height: 70vh;
+  perspective: 1000px;
 }
 .flip-inner{
   width: 100%;
@@ -30,7 +31,7 @@
   height: 100%;
   backface-visibility: hidden; /* hides the other side when turned */
   display: flex;
-  align-item: center;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
 }
@@ -75,9 +76,12 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #000;
   color: #fff;
 }
