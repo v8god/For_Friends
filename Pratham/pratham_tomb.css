@@ -57,7 +57,7 @@
   font-size: 20px;
   color: #fff;
 }
-.info-card #changeView {
+.flip-front #changeView {
   position: relative;
   padding: 8px 12px;
   color: white;
@@ -71,7 +71,7 @@
 /* #changeView input:checked + .flip-inner.rotate360 {
   transform: rotateY(360deg);
 } */
-.flip-back button{
+.flip-back #changeView{
   position: absolute;
   top: 10px;
   left: 10px;
