@@ -65,9 +65,23 @@
   border: 1px solid white;
   cursor: pointer;
 }
-#changeView input:checked + .flip-inner {
+/* #changeView input:checked + .flip-inner {
+  transform: rotateY(180deg);
+} */
+/* #changeView input:checked + .flip-inner.rotate360 {
+  transform: rotateY(360deg);
+} */
+.flip-back button{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+}
+#flip-toggle:checked + .flip-inner {
   transform: rotateY(180deg);
 }
-#changeView input:checked + .flip-inner.rotate360 {
-  transform: rotateY(360deg);
-}
+
