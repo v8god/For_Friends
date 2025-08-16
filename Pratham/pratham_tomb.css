@@ -82,7 +82,8 @@
   background-color: #000;
   color: #fff;
 }
-.flip-back #changeView .back-arrow{
+/* .flip-back #changeView .back-arrow{ */
+.flip-back #changeView{
   position: relative;
   display: flex;
   align-items: center;
