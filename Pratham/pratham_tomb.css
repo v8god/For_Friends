@@ -37,7 +37,7 @@
 }
 .flip-front span{
   position: relative;
-  top: 100px;
+/*   top: 100px; */
   left: 10px;
   font-family: "Playwrite México Guides", sans-serif;
 /*   font-size: 50px; */
