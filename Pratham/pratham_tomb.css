@@ -40,13 +40,15 @@
   top: 5vh;
   right: 10px;
   font-family: "Playwrite México Guides", sans-serif;
-  font-size: 50px;
+/*   font-size: 50px; */
+  font-size: 5rm;
   color: #fff;
   z-index: 1;
 }
 .flip-front span1{
   font-family: "Playwrite México Guides", sans-serif;
-  font-size: 50px;
+/*   font-size: 50px; */
+  font-size: 5rm;
   color: #000;
   line-height: 1em;
 /*   color: #252838; */
