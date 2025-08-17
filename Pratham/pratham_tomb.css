@@ -37,24 +37,24 @@
 }
 .flip-front span{
   position: relative;
-  top: 5vh;
-  right: 10px;
+  top: 100px;
+  left: 10px;
   font-family: "Playwrite México Guides", sans-serif;
 /*   font-size: 50px; */
-  font-size: 5rm;
+  font-size: 10rm;
   color: #fff;
   z-index: 1;
 }
 .flip-front span1{
   font-family: "Playwrite México Guides", sans-serif;
 /*   font-size: 50px; */
-  font-size: 5rm;
+  font-size: 10rm;
   color: #000;
   line-height: 1em;
 /*   color: #252838; */
   position: relative;
   top: -20px;
-  left: 100px;
+  right: 100px;
 /*   top: 15vh; */
   z-index: 0;
 }
