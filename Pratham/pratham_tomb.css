@@ -36,14 +36,30 @@
   flex-direction: column;
 }
 .flip-front span{
+  position: relative;
+  top: 8vh;
   font-family: "Playwrite México Guides", sans-serif;
-  font-size: 30px;
+  font-size: 50px;
   color: #fff;
+  z-index: 1;
 }
 .flip-front span1{
   font-family: "Playwrite México Guides", sans-serif;
-  font-size: 30px;
-  color: #fff;
+  font-size: 50px;
+  color: #000;
+  line-height: 1em;
+/*   color: #252838; */
+  position: relative;
+  top: -550px;
+}
+.flip-front span1::after{
+    /*border: 1px solid #000;*/
+    position: absolute;
+    inset: 0 0 0 0;
+    content: attr(data-content);
+    z-index: 3;
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
 }
 .flip-front{
   background: coral;
