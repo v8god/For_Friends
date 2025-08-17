@@ -14,27 +14,59 @@
             @import url('https://fonts.cdnfonts.com/css/odibee-sans');
             @import url('https://fonts.cdnfonts.com/css/knight-warrior');
             @media (max-width: 600px){
-                body{
+/*                 body{
                     width: 100vw;
-                }
-                .containerbox{
+                } */
+/*                 .containerbox{
                     background-color: transparent;
                     border: red 2px solid;
                     position: absolute;
                     left: -100px;
                     width: 162vw;
-                }
-                .holder{
-                    width: 100vw;
-                    height: 117vh;
+                } */
+                .holder .bg-video{
+                    width: 98vw;
+                    height: 99vh;
                 }
                 .title{
+                    top: 40vh;
+                    left: 20vw;
+                    width: 60vw;
+                    height: 14vh;
+                }
+                .title span{
+                    font-size: 14vh;
+                }
+                ul{
+                    position: absolute;
+                    top: 10px;
                     left: 50px;
+                    float: left;
+                    list-style-type: none;
+                }
+                ul li{
+                    display: inline-block;
+                }
+                ul li a{
+                    text-decoration: none;
+                    color: #fff;
+                    padding: 10px 20px;
+                    border: 1px solid #fff;
+                    transition: 0.6s ease;
+                }
+                ul li a:hover{
+                    background-color: #fff;
+                    color: #000;
+                }
+                ul li.active a{
+                    background-color: #fff;
+                    color: #000;
                 }
                 .disc{
-                    width: 100vw;
-                    height: 100vw;
-                    translate(-50%, -50%)
+                    position: relative;
+                    width: 98vw;
+                    height: 98vw;
+/*                     translate(-50%, -50%) */
                 }
                 .edit .pre_author{
                     width: 100vw;
@@ -45,12 +77,23 @@
                     width: 100vw;
                 }
                 .content{
-                    width: 100vw;
+                    width: 99vw;
+                    height: 98vh;
                 }
-                .dml{
+                .dml, .trigger{
                     width: 100vw;
                 }
                 .contact{
+                    width: 100vw;
+                    height: 100vh;
+                }
+                s1{
+                    position: relative;
+                    width: 100vw;
+                )
+                s2{
+                    position: relative;
+                    top: 30px;
                     width: 100vw;
                 }
                 .popup{
@@ -89,8 +132,10 @@
             </div>
             <div class="disc"></div>
             <div class="edit" id="about">
-                <h1>Video </h1>
-                <h2 data-content="Editor">Editor</h2>
+                <div class="pre-author">
+                    <h1>Video </h1>
+                    <h2 data-content="Editor">Editor</h2>
+                </div>
                 <div class="author">
                     <h3>Raman</h3>
                     <div class="par">
@@ -246,6 +291,7 @@
         </div>
     </body>
 </html>
+
 
 
 
